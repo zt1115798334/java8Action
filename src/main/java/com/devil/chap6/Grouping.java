@@ -30,9 +30,9 @@ public class Grouping {
         return menu.stream().collect(groupingBy(Dish::getType));
     }
 
-    private static Map<Dish.Type, Set<String>> groupDishTagsByType() {
-        menu.stream().collect(groupingBy(Dish::getType, flatMapping(dish -> dishTags.get( dish.getName() ).stream(), toSet())));
-    }
+//    private static Map<Dish.Type, Set<String>> groupDishTagsByType() {
+//        menu.stream().collect(groupingBy(Dish::getType, flatMapping(dish -> dishTags.get( dish.getName() ).stream(), toSet())));
+//    }
     private static Map<Dish.Type, List<String>> groupDishNamesByType(){
         return menu.stream().collect(groupingBy(Dish::getType,mapping(Dish::getName,toList())));
     }
