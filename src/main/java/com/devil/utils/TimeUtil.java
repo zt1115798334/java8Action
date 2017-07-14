@@ -1,7 +1,7 @@
 package com.devil.utils;
 
-import java.time.Clock;
-import java.time.LocalDateTime;
+import java.text.DateFormat;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class TimeUtil {
 
     private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER = TimeFormat.LONG_DATE_PATTERN_LINE.formatter;
+    private static final DateTimeFormatter DEFAULT_DATE_FORMATTER = TimeFormat.SHORT_DATE_PATTERN_LINE.formatter;
 
     private TimeUtil() {
 
@@ -35,6 +36,25 @@ public class TimeUtil {
      */
     public static LocalDateTime parseTime(String timeStr, TimeFormat format) {
         return LocalDateTime.parse(timeStr, format.formatter);
+    }
+
+    /**
+     * String转日期
+     * @param timeStr
+     * @return
+     */
+    public static LocalDate parseDate(String timeStr) {
+        return LocalDate.parse(timeStr, DEFAULT_DATE_FORMATTER);
+    }
+
+    /**
+     * String转日期
+     * @param timeStr
+     * @param format
+     * @return
+     */
+    public static LocalDate parseDate(String timeStr, TimeFormat format) {
+        return LocalDate.parse(timeStr, format.formatter);
     }
 
     /**
@@ -114,12 +134,7 @@ public class TimeUtil {
     }
 
     public static void main(String[] args) {
-        LocalDateTime ldt = LocalDateTime.now().plusDays(-3);
-        LocalDateTime add5 = ldt.plusMonths(5);
-        System.out.println(TimeUtil.parseTime(add5));
 
-        Clock clock = Clock.systemUTC();
-        System.out.println("clock = " + clock);
     }
 
 }
